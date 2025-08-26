@@ -1,0 +1,89 @@
+/* sidebar.component.css */
+
+/* Ana sidebar konteyneri: Sabit, tam yükseklik ve koyu tema */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Tam ekran yüksekliği */
+  width: 250px; /* Sidebar genişliği */
+  background-color: rgb(0, 33, 55,0.3); /* Koyu arka plan */
+  padding: 1rem;
+  z-index: 1000;
+}
+
+
+.sidebar-row {
+  display: flex;
+  flex-direction: column; /* Öğeleri dikey olarak sırala */
+  height: 100%;
+}
+
+/* Logo bölümü */
+.logo-col {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.img-logo {
+  max-width: 150px; /* Logonun maksimum genişliği */
+  height: auto;
+}
+
+/* Her bir menü öğesi */
+.col-item a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  border-radius: 0.375rem; /* Hafif yuvarlak köşeler */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Menü öğesinin üzerine gelindiğinde */
+.col-item a:hover {
+  background-color: rgba(0, 26, 44);
+  color: #fff;
+}
+/* Massora logosu için tüm state’lerde sabit görünüm */
+.logo-link,
+.logo-link:hover,
+.logo-link:focus,
+.logo-link:active {
+  color: #f8f9fa !important;        /* Yazı hep açık renk */
+  background: transparent !important; /* Arka plan asla beyaza dönmesin */
+  text-decoration: none !important;  /* Alt çizgi vs. olmasın */
+  box-shadow: none !important;       /* Bootstrap focus gölgesi varsa kapat */
+}
+.logo-link span,
+.logo-link:hover span,
+.logo-link:focus span,
+.logo-link:active span {
+  color: #f8f9fa !important;
+}
+/* Aktif olan menü öğesi */
+.col-item.active-menu a {
+  background-color: rgba(0, 26, 44); 
+  color: #333; /* Yazı rengi koyu olsun ki okunabilir olsun */
+  font-weight: 600;
+  backdrop-filter: blur(4px); /* Altındaki içeriğe hafif blur efekti verir */
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+/* Menü başlığı (ikon ve metni yan yana dizer) */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* İkon ile metin arasına boşluk koyar */
+  color: rgb(227, 233, 233);
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  /* İkon rengini metin rengiyle uyumlu hale getirmek için (SVG'ler için) */
+  filter: invert(1);
+}

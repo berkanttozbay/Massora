@@ -1,0 +1,113 @@
+.dashboard-container {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  min-height: 400px;
+  background-color: #001a2c;
+  color: #fff;
+}
+.dashboard-container h1 {
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #fff; /* Arka plana göre */
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card-vehicle { background: linear-gradient(135deg, #0077b6, #00b4d8); }
+.stat-card-driver { background: linear-gradient(135deg, #f77f00, #fcbf49); }
+.stat-card-partner { background: linear-gradient(135deg, #2d6a4f, #40916c); }
+
+.stat-icon {
+  font-size: 36px;
+  margin-right: 20px;
+  opacity: 0.8;
+}
+
+.stat-content {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+.dashboard-subtitle {
+  font-size: 1rem;       /* Başlıktan daha küçük */
+  font-weight: 400;      /* Normal kalınlık */
+  color: rgba(255, 255, 255, 0.7); /* Daha soluk beyaz */
+  margin-top: -1rem;     /* H1’e yakınlaştırmak için */
+  margin-bottom: 2rem;   /* Kartlarla arasında boşluk bırak */
+}
+
+
+/* Animation */
+
+
+.polygons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;        /* col-8’in tamamını kapla */
+  height: 100%;       /* Dashboard alanının tamamını kapla */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* İçerik poligonların üstünde dursun */
+.dashboard-container > *:not(.polygons) {
+  position: relative;
+  z-index: 2;
+}
+
+/* 🔵 Poligon şekilleri */
+.poly {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #0077b6, #00b4d8);
+  opacity: 0.25;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+
+/* İkinci poligon */
+.poly:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(45deg, #f77f00, #fcbf49);
+  top: 40%;
+  left: 70%;
+  opacity: 0.2;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+
+/* Animasyon */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-25px);
+    opacity: 0.5;
+  }
+}

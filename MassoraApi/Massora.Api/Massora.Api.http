@@ -1,0 +1,6 @@
+@Massora.Api_HostAddress = http://localhost:5260
+
+GET {{Massora.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,96 @@
+/* Modal */
+.modal-content {
+  background-color: #001A2C !important;
+  color: #001A2C !important;
+  border: 1px solid #001A2C !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* Başlık */
+.modal-header {
+  border-bottom: 1px solid #001A2C !important;
+  background-color: #001A2C;
+}
+.modal-header .modal-title {
+  color: #fff !important;
+  font-weight: 600;
+}
+.modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Gövde */
+.modal-body {
+  background-color: #001A2C;
+  padding: 20px;
+}
+
+/* Label */
+.modal-body label {
+  color: #e0e7dd;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* Input & Select */
+.modal-body input.form-control,
+.modal-body select.form-select {
+  border-radius: 10px;
+  background-color: #002137;
+  border: 1px solid #002137;
+  color: #fff;
+  padding: 10px;
+}
+
+.modal-body .input-group-text {
+  background-color: #002137;
+  color: #fff;
+  border: 1px solid #002137;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Placeholder */
+.modal-body input.form-control::placeholder,
+.modal-body select.form-select option[disabled] {
+  color: #a3b18a;
+}
+
+/* Focus efekti */
+.modal-body input.form-control:focus,
+.modal-body select.form-select:focus {
+  background-color: #002137;
+  border-color: #ebe6db;
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.25);
+  outline: none;
+}
+
+/* Footer Butonlar */
+.modal-footer {
+  border-top: 1px solid #001A2C !important;
+  padding-top: 20px;
+}
+.modal-footer .btn {
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+.modal-footer .btn-secondary {
+  background-color: rgb(190, 32, 21);
+  border-color: #be2015;
+}
+.modal-footer .btn-secondary:hover {
+  background-color: rgb(190, 32, 21,0.7);
+}
+.modal-footer .btn-success {
+  background-color: #003356;
+  border-color: #003356;
+  color: #ebe6db;
+}
+.modal-footer .btn-success:hover:not(:disabled) {
+  background-color:rgb(0, 33, 55,0.3);
+}

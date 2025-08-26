@@ -1,0 +1,32 @@
+<h2>Şirket Listesi (ResponsibleId = 1)</h2>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>
+
+<table *ngIf="companies.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ad</th>
+      <th>Telefon</th>
+      <th>Email</th>
+      <th>Adres</th>
+      <th>CreatedDate</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies">
+      <td>{{ company.id }}</td>
+      <td>{{ company.name }}</td>
+      <td>{{ company.contactPhone }}</td>
+      <td>{{ company.contactEmail }}</td>
+      <td>{{ company.address }}</td>
+      <td>{{ company.createdDate | date:'short'}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="companies.length === 0 && !error">Kayıtlı şirket bulunamadı.</p>

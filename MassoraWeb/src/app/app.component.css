@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-header {
+  height: 60px;
+  flex-shrink: 0;
+  /* Arka plan rengini buradan kaldırıp global'e taşıyacağız */
+}
+
+.content-row {
+  flex: 1;
+  overflow-y: auto;
+}

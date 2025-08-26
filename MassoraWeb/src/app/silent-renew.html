@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Silent Renew</title>
+  </head>
+  <body>
+    <script>
+      console.log('Silent renew callback');
+      window.parent.postMessage(location.href, location.origin);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ modalTitle }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form #fuelForm="ngForm" (ngSubmit)="onSubmit(fuelForm)">
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="vehicleId" class="form-label">Vehicle</label>
+        <select class="form-select" id="vehicleId" name="vehicleId"
+                [(ngModel)]="fuelHistoryForm.vehicleId" required>
+          <option [ngValue]="null" disabled selected>Bir araç seçin...</option>
+          <option *ngFor="let vehicle of vehicles$ | async" [value]="vehicle.id">
+            {{ vehicle.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="driverId" class="form-label">Driver</label>
+        <select class="form-select" id="driverId" name="driverId"
+                [(ngModel)]="fuelHistoryForm.driverId" required>
+          <option [ngValue]="null" disabled selected>Bir sürücü seçin...</option>
+          <option *ngFor="let driver of drivers$ | async" [value]="driver.id">
+            {{ driver.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-2">
+        <div class="col-md-4">
+            <label for="fuelCompany" class="form-label">Fuel Company</label>
+            <input type="text" class="form-control" id="fuelCompany" name="fuelCompany"
+                   [(ngModel)]="fuelHistoryForm.fuelCompany" required>
+        </div>
+        <div class="col-md-4">
+            <label for="fee" class="form-label">Fee</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="fee" name="fee"
+                       [(ngModel)]="fuelHistoryForm.fee" required>
+                <span class="input-group-text">TRY</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="liter" class="form-label">Liter</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="liter" name="liter"
+                       [(ngModel)]="fuelHistoryForm.liter" required>
+                <span class="input-group-text">LT</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date"
+               [(ngModel)]="fuelHistoryForm.date" required>
+      </div>
+      <div class="col-md-6">
+        <label for="time" class="form-label">Time</label>
+        <input type="time" class="form-control" id="time" name="time"
+               [(ngModel)]="fuelHistoryForm.time" required>
+      </div>
+    </div>
+
+    <div class="modal-footer mt-4">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+        <i class="fas fa-times me-2"></i>Cancel
+      </button>
+      <button type="submit" class="btn btn-success" [disabled]="!fuelForm.form.valid">
+        <i class="fas fa-check me-2"></i>
+        {{ fuelHistoryToEdit ? 'Save changes' : 'Add Fuelhistory' }}
+      </button>
+    </div>
+    
+  </form>
+</div>

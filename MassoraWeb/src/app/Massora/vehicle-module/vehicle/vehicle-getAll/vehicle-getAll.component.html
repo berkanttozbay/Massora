@@ -1,0 +1,28 @@
+
+
+<div>
+  <app-massora-datatable 
+    *ngIf="!error"
+    [data]="datatableData"
+    [title]="'Vehicles'"
+    [totalCount]="totalCount"
+    [pageNumber]="pagination.pageNumber"
+    [totalPages]="(totalCount / pagination.pageSize)"
+    (pageChange)="onPageChange($event)"
+    (onAdd)="handleAdd()"
+    (onSearch)="handleSearch($event)"
+    (edit)="openEditVehicleModal($event)"
+    (addClicked)="openAddVehicleModal()"
+    (deleteClicked)="handleDeleteRequest($event)"
+     > 
+      
+      
+  </app-massora-datatable>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+</div>

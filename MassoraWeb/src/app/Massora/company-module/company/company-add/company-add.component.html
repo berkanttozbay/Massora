@@ -1,0 +1,33 @@
+<h2>Yeni Şirket Ekle (Template-Driven)</h2>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div>
+    <label>Ad:</label>
+    <input name="name" [(ngModel)]="company.name" required />
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input name="contactEmail" [(ngModel)]="company.contactEmail" required email />
+  </div>
+
+  <div>
+    <label>Telefon:</label>
+    <input name="contactPhone" [(ngModel)]="company.contactPhone" required />
+  </div>
+
+  <div>
+    <label>Adres:</label>
+    <input name="address" [(ngModel)]="company.address" required />
+  </div>
+
+  <div>
+    <label>Sorumlu Kullanıcı ID:</label>
+    <input name="responsibleUserId" type="number" [(ngModel)]="company.responsibleUserId" required />
+  </div>
+
+  <button type="submit">Ekle</button>
+</form>
+
+<p *ngIf="successMessage" style="color:green">{{ successMessage }}</p>
+<p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>

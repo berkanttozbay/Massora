@@ -1,0 +1,98 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ modalTitle }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+
+    <!-- 1. Satır - Araç, Sürücü, Partner -->
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="vehicleId" class="form-label">Vehicle</label>
+        <select class="form-select" id="vehicleId" name="vehicleId"
+                [(ngModel)]="workHistoryForm.vehicleId" required>
+          <option [ngValue]="null" disabled selected>Choose a vehicle...</option>
+          <option *ngFor="let vehicle of vehicles$ | async" [value]="vehicle.id">{{ vehicle.name }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="driverId" class="form-label">Driver</label>
+        <select class="form-select" id="driverId" name="driverId"
+                [(ngModel)]="workHistoryForm.driverId" required>
+          <option [ngValue]="null" disabled selected>Bir sürücü seçin...</option>
+          <option *ngFor="let driver of drivers$ | async" [value]="driver.id">{{ driver.name }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="partnerCompanyId" class="form-label">Partner Company</label>
+        <select class="form-select" id="partnerCompanyId" name="partnerCompanyId"
+                [(ngModel)]="workHistoryForm.partnerCompanyId" required>
+          <option [ngValue]="null" disabled selected>Bir partner şirket seçin...</option>
+          <option *ngFor="let partner of partners$ | async" [value]="partner.id">{{ partner.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 2. Satır - Ücretler -->
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <label for="calculatedDriverFee" class="form-label">Calculated Driver Fee</label>
+        <div class="input-group">
+          <input type="number" class="form-control" id="calculatedDriverFee" name="calculatedDriverFee"
+                 [(ngModel)]="workHistoryForm.calculatedDriverFee" required>
+          <span class="input-group-text">TRY</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="calculatedPartnerFee" class="form-label">Calculated Partner Fee</label>
+        <div class="input-group">
+          <input type="number" class="form-control" id="calculatedPartnerFee" name="calculatedPartnerFee"
+                 [(ngModel)]="workHistoryForm.calculatedPartnerFee" required>
+          <span class="input-group-text">TRY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Satır - Adres -->
+    <div class="mt-3">
+      <label for="address" class="form-label">Address</label>
+      <input type="text" class="form-control" id="address" name="address"
+             [(ngModel)]="workHistoryForm.address" required>
+    </div>
+
+    <!-- 4. Satır - Tarih ve Saatler -->
+    <div class="row g-3 mt-2">
+      <div class="col-md-4">
+        <label for="workDate" class="form-label">Date</label>
+        <input type="date" class="form-control" id="workDate" name="workDate"
+               [(ngModel)]="workHistoryForm.date" required>
+      </div>
+      <div class="col-md-4">
+        <label for="startTime" class="form-label">Start Time</label>
+        <input type="time" class="form-control" id="startTime" name="startTime"
+               [(ngModel)]="workHistoryForm.startTime" required>
+      </div>
+      <div class="col-md-4">
+        <label for="endTime" class="form-label">End Time</label>
+        <input type="time" class="form-control" id="endTime" name="endTime"
+               [(ngModel)]="workHistoryForm.endTime" required>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer mt-4">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+        <i class="fas fa-times me-2"></i>Cancel
+      </button>
+      <button type="submit" class="btn btn-success" [disabled]="!formRef.form.valid">
+        <i class="fas fa-check me-2"></i>
+        {{ workHistoryToEdit ? 'Save changes' : 'Add Workhistory' }}
+      </button>
+    </div>
+
+  </form>
+</div>

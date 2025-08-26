@@ -1,0 +1,33 @@
+
+  <!-- Hata durumunda bir mesaj göster -->
+<div *ngIf="error" class="alert alert-danger m-3">
+  {{ error }}
+</div>
+
+<!-- 
+  Hata yoksa, datatable component'ini burada çağırıyoruz.
+  - [data]="datatableData" ile hazırladığımız veriyi içeri aktarıyoruz.
+  - (onAdd) ve (onSearch) ile datatable'dan gelen olayları dinliyoruz.
+--><div>
+<app-massora-datatable 
+  *ngIf="!error"
+  [data]="datatableData"
+  [title]="'Work Histories'"
+  [totalCount]="totalCount"
+  [pageNumber]="pagination.pageNumber"
+  [totalPages]="(totalCount / pagination.pageSize)"
+  (pageChange)="onPageChange($event)"
+  (onAdd)="handleAdd()"
+  (onSearch)="handleSearch($event)"
+  (edit)="openEditWorkHistoryModal($event)"
+  (addClicked)="openAddWorkHistoryModal()"
+  (deleteClicked)="handleDeleteRequest($event)">   
+</app-massora-datatable>
+
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+</div>

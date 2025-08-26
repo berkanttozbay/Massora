@@ -1,0 +1,274 @@
+/* Genel Stiller */
+:host {
+  font-family: 'Didot', sans-serif; /* Daha modern bir font */
+}
+
+.datatable-container {
+  padding: 16px;
+  background-color: rgb(0, 33, 55,0.3); /* %85 opaklık */
+  border-radius: 12px;
+}
+
+/* Header Stilleri */
+.datatable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002E4E;
+}
+
+.search-input {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding-left: 36px;
+  width: 250px;
+  height: 40px;
+}
+
+.btn {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+}
+.btn-icon-delete {
+  color: #c54753 !important; /* Kırmızı */
+}
+.btn-filter {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+/* Tablo Stilleri */
+.table-responsive {
+  /* border: 1px solid #e5e7eb; */
+  border-radius: 8px;
+  overflow: hidden; /* Kenarları düzgün göstermek için */
+}
+
+.table {
+  width: 100%;
+  /* Tablonun kendi arka planını şeffaf yapalım ki satırlar arasındaki boşluklar ana rengi göstersin */
+  background-color: transparent; 
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Satırlar arası dikey boşluk */
+}
+.table td {
+  /* border-top: 1px solid #8ecae6;
+  border-bottom: 1px solid #8ecae6; */
+}
+.table td:first-child {
+  /* border-left: 1px solid #e5e7eb; */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.table td:last-child {
+  /* border-right: 1px solid #e5e7eb; */
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.table th, .table td {
+  padding: 8px 12px; /* 12px 16px'ten düşürüldü */
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table thead {
+  background-color: #002137 ; 
+}
+
+.table th {
+  background: #001A2C;
+  font-size: 12px; /* 12px'ten düşürüldü */
+  font-weight: 500;
+  color: #f8f9fa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  background-color: transparent; /* ÖNEMLİ: Bu, td'nin renginin görünmesini sağlar */
+  border-bottom: none; /* Artık td'de border var, buna gerek yok */
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+.table tbody td {
+  background-color: rgb(0, 26, 44,0.7); /* İstediğiniz renk */
+   color: rgb(0, 26, 44,0.3)/*Yazıların okunabilmesi için koyu renk */ 
+  /* border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+.table tbody tr:hover td {
+  background-color: #73b9d8; /* Üzerine gelindiğinde bir ton koyusu */
+}
+
+.form-check-input {
+  border-radius: 4px;
+}
+
+/* Özel Hücre Stilleri */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar Boyutunu Küçült */
+.avatar {
+  width: 32px; /* 40px'ten düşürüldü */
+  height: 32px; /* 40px'ten düşürüldü */
+  border-radius: 50%;
+  background-color: #e0e7ff;
+  color: #002137;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px; /* 14px'ten düşürüldü */
+}
+
+.avatar i {
+  font-size: 16px; /* 18px'ten düşürüldü */
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 14px; /* Orijinal boyutta bırakılabilir veya küçültülebilir */
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.user-handle {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-active { background-color: #002137; color: rgba(255, 255, 255, 0.65); }
+.status-active .status-dot { background-color: #10b981; }
+
+.status-offline { background-color: #002137; color: rgba(255, 255, 255, 0.65); }
+.status-offline .status-dot { background-color: #f00a0a; }
+
+.detail-text {
+  font-size: 13px; /* 14px'ten düşürüldü */
+  color: #f8f9fa;
+}
+.detail-text.small {
+  font-size: 11px; /* 12px'ten düşürüldü */
+  color: #6b7280;
+}
+
+.action-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  display: inline-flex; /* varsa inline-block da olabilir */
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+.btn-icon i {
+  font-size: 16px;
+}
+.btn-icon:hover {
+  color: #374151;
+}
+
+.no-data-message {
+  padding: 40px;
+  color: #6b7280;
+}
+
+/* Sayfalama Stilleri */
+.datatable-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: #939aa7;
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-nav {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+}
+.btn-nav:hover:not(:disabled) {
+  background-color: #f9fafb;
+}
+.btn-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-number-info {
+  font-size: 13px;
+  color: #939aa7;
+  padding: 0 8px;
+}

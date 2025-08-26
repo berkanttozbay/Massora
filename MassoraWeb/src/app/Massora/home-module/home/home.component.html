@@ -1,0 +1,59 @@
+<div class="dashboard-container">
+
+  <!-- 🔵 Animasyon en üste -->
+  <div class="polygons">
+    <div class="poly"></div>
+    <div class="poly"></div>
+  </div>
+
+  <!-- 🔵 Normal içerik -->
+  <h1>Welcome</h1>
+  <p class="dashboard-subtitle">Click on the page you want to go to</p>
+  
+  <ng-container *ngIf="stats$ | async as stats; else loadingOrError">
+    <div class="row g-4">
+      
+      <div class="col-md-4">
+        <div class="stat-card stat-card-vehicle">
+          <div class="stat-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ stats.vehicleCount }}</div>
+            <div class="stat-label">Total vehicle</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="stat-card stat-card-driver">
+          <div class="stat-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ stats.driverCount }}</div>
+            <div class="stat-label">Total driver</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="stat-card stat-card-partner">
+          <div class="stat-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ stats.partnerCompanyCount }}</div>
+            <div class="stat-label">Total partner company</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+
+  <ng-template #loadingOrError>
+    <p>Veriler yükleniyor...</p>
+  </ng-template>
+
+</div>

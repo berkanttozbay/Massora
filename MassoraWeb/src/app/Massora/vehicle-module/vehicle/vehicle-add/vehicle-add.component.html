@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ modalTitle }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form #vehicleFormRef="ngForm" (ngSubmit)="onSubmit(vehicleFormRef)">
+
+    <!-- 1. Satır: Plaka ve Araç Tipi -->
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="licensePlate" class="form-label">License Plate</label>
+        <input type="text" class="form-control" id="licensePlate" name="licensePlate" [(ngModel)]="vehicleForm.licensePlate" required>
+      </div>
+      <div class="col-md-6">
+        <label for="vehicleType" class="form-label">Vehicle Type</label>
+        <input type="text" class="form-control" id="vehicleType" name="vehicleType" [(ngModel)]="vehicleForm.vehicleType" required>
+      </div>
+    </div>
+
+    <!-- 2. Satır: Ücretler -->
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <label for="hourlyWageDriver" class="form-label">Hourly Wage Driver</label>
+        <div class="input-group">
+          <input type="number" class="form-control" id="hourlyWageDriver" name="hourlyWageDriver" [(ngModel)]="vehicleForm.hourlyWageDriver" required>
+          <span class="input-group-text">TRY</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="hourlyWagePartner" class="form-label">Hourly Wage Partner</label>
+        <div class="input-group">
+          <input type="number" class="form-control" id="hourlyWagePartner" name="hourlyWagePartner" [(ngModel)]="vehicleForm.hourlyWagePartner" required>
+          <span class="input-group-text">TRY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer mt-4">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+        <i class="fas fa-times me-2"></i>Cancel
+      </button>
+      <button type="submit" class="btn btn-success" [disabled]="!vehicleFormRef.form.valid">
+        <i class="fas fa-check me-2"></i>
+        {{ vehicleToEdit ? 'Save changes' : 'Add vehicle' }}
+      </button>
+    </div>
+  </form>
+</div>

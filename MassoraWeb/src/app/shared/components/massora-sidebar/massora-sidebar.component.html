@@ -1,0 +1,40 @@
+  <div class="sidebar-container" style="border-radius: 20px; margin-left: 40px; margin-top: 50px; ">
+    <div class="row sidebar-row">
+      <div class="d-flex flex-column flex-shrink-0 p-3  vh-100" >
+
+        <a [routerLink]="'/home'" class="logo-link d-flex justify-content-center align-items-center mb-3 text-decoration-none">
+          <span class="fs-4">Massora</span>
+        </a>
+
+        <hr style="color:#f8f9fa ;">
+        
+
+        <div class="col-item" *ngFor="let menu of filteredMenu" routerLinkActive="active-menu">
+          
+          <a [routerLink]="!menu.children ? menu.link : null" (click)="menu.children ? toggleMenu(menu.title) : null" class="menu-parent-link">
+            <span class="title">
+              <img class="menu-icon" [src]="menu.icon" alt="">
+              {{ menu.title }}
+            </span>
+            <ng-container *ngIf="menu.children">
+              <i class="fa-solid fa-angle-right up-down-icon" *ngIf="!menuOpenState[menu.title]"></i>
+              <i class="fa-solid fa-angle-down up-down-icon" *ngIf="menuOpenState[menu.title]"></i>
+            </ng-container>
+          </a>
+
+          <div class="submenu-container" *ngIf="menu.children && menuOpenState[menu.title]">
+            <a *ngFor="let item of menu.children"
+              class="child-menu-link"
+              [routerLink]="item.link"
+              routerLinkActive="active-child-menu">
+              <img class="menu-item-icon" [src]="item.icon" alt="">
+              <span>{{ item.title }}</span>
+            </a>
+          </div>
+
+        </div>
+        
+
+      </div>
+    </div>
+  </div>

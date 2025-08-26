@@ -1,0 +1,121 @@
+<div class="datatable-container">
+  <!-- ✅ ÜST BAŞLIK ve ARAMA ALANI -->
+  <div class="datatable-header">
+    <h2 class="title" style="color: #f8f9fa;">{{ title }}</h2>
+    <div class="actions">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input 
+          type="text" 
+          class="form-control search-input" 
+          placeholder="Ara..."
+          [(ngModel)]="searchTerm"
+          (input)="search()">
+      </div>
+      <button class="btn add-button" (click)="onAddClick()">
+        <i class="fas fa-plus" style="color: #f8f9fa;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ✅ TABLO ALANI -->
+  <div class="table-responsive">
+    <table class="table align-middle">
+      
+      <!-- ✅ Dinamik kolon başlıkları -->
+      <thead>
+        <tr>
+          <th style="width: 5%;">
+            <input class="form-check-input" type="checkbox">
+          </th>
+          <!-- ✅ Avatar Kolonu -->
+          <th style="width: 10%;">Avatar</th>
+
+          <!-- Kolon başlıklarını döndür -->
+          <th *ngFor="let col of filteredData[0]?.columns" scope="col">
+            {{ col.columnName }}
+          </th>
+
+          <!-- ✅ Status Kolonu -->
+          <th style="width: 10%;">Durum</th>
+
+          <th style="width: 10%;"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- ✅ Veri yoksa mesaj göster -->
+        <tr *ngIf="filteredData.length === 0">
+          <td [attr.colspan]="(filteredData[0]?.columns?.length || 0) + 4" class="text-center no-data-message">
+            Gösterilecek veri bulunamadı.
+          </td>
+        </tr>
+
+        <!-- ✅ Veri varsa kolonları döndür -->
+        <tr *ngFor="let item of filteredData">
+          <td><input class="form-check-input" type="checkbox"></td>
+
+          <!-- ✅ Avatar Hücresi -->
+          <td>
+            <div class="user-cell">
+              <!-- Eğer item.avatar varsa resmi göster -->
+              <img *ngIf="item.avatar" [innerHTML]="item.avatar" alt="avatar" class="avatar">
+              
+              <!-- Avatar yoksa default ikon göster -->
+              <div *ngIf="!item.avatar" class="avatar">
+                <i class="fas fa-truck"></i>
+              </div>
+            </div>
+          </td>
+          
+          <!-- Dinamik kolon verilerini döndür -->
+          <td *ngFor="let col of item.columns">
+            <span class="detail-text">{{ col.columnValue }}</span>
+          </td>
+
+          <!-- ✅ Status alanı -->
+          <td>
+            <span class="status-badge" [ngClass]="item.status ? 'status-active' : 'status-offline'">
+              <span class="status-dot"></span>
+              {{ item.status ? 'Aktif' : 'Pasif' }}
+            </span>
+          </td>
+
+          <!-- İşlemler -->
+          <td>
+            <div class="action-icons">
+              <button class="btn-icon" (click)="onEditClick(item)" title="Düzenle">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn-icon btn-icon-delete" title="Sil" (click)="onDeleteClick(item)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ✅ SAYFALAMA -->
+  <div class="datatable-footer" *ngIf="totalCount > 0">
+    <div class="pagination-info">
+      Toplam {{ totalCount }} kayıttan {{ filteredData.length }} tanesi gösteriliyor.
+    </div>
+    <div class="pagination-nav">
+      <button class="btn-nav" [disabled]="pageNumber === 1" (click)="goToPage(1)" title="İlk Sayfa">
+        <i class="fas fa-angle-double-left"></i>
+      </button>
+      <button class="btn-nav" [disabled]="pageNumber === 1" (click)="goToPage(pageNumber - 1)" title="Önceki Sayfa">
+        <i class="fas fa-angle-left"></i>
+      </button>
+      <span class="page-number-info">Sayfa {{ pageNumber }} / {{ totalPages }}</span>
+      <button class="btn-nav" [disabled]="pageNumber >= totalPages" (click)="goToPage(pageNumber + 1)" title="Sonraki Sayfa">
+        <i class="fas fa-angle-right"></i>
+      </button>
+      <button class="btn-nav" [disabled]="pageNumber >= totalPages" (click)="goToPage(totalPages)" title="Son Sayfa">
+        <i class="fas fa-angle-double-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<header class="main-header">
+  <div class="container-fluid d-flex justify-content-end align-items-center h-100">
+    <div class="user-controls">
+      
+      <!-- ✅ Giriş Yap Butonu (Kullanıcı giriş yapmamışsa) -->
+      <button *ngIf="!(authService.isAuthenticated$ | async)" (click)="login()">
+        <i class="fas fa-sign-in-alt me-2"></i>
+      </button>
+
+      <!-- ✅ Çıkış Yap Butonu (Kullanıcı giriş yapmışsa) -->
+      <div *ngIf="authService.isAuthenticated$ | async" class="user-info">
+        <span style="color: aliceblue;">Merhaba, {{ (authService.userData$ | async)?.name }}</span>
+        <button (click)="logout()" style="background-color: red;" >
+          <i class="fas fa-sign-out-alt me-2 "  ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- style etiketi buradan kaldırıldı -->
+<div class="container-fluid content-row">
+  <div class="row h-100">
+    <!-- Sütun 1: Sidebar (col-2) -->
+    <div class="col-md-2 sidebar-container">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <!-- Sütun 2: Ana İçerik (col-10) -->
+    <!-- col-md-8, col-md-10 olarak düzeltildi -->
+    <main class="col-md-8 page-content-container">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

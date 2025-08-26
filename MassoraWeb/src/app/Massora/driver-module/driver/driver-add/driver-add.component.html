@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ modalTitle }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Fullname</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="driverForm.name" required>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="driverForm.email" required>
+      </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="driverForm.phone" required>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <label for="birthDate" class="form-label">Birth Date</label>
+        <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="driverForm.birthDate" required>
+      </div>
+      <div class="col-md-6">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" id="gender" name="gender" [(ngModel)]="driverForm.gender" required>
+          <option [ngValue]="null" disabled>Seçiniz...</option>
+          <option value="erkek">Erkek</option>
+          <option value="kadin">Kadın</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <label for="vehicleId" class="form-label">Vehicle</label>
+      <select class="form-select" id="vehicleId" name="vehicleId" [(ngModel)]="driverForm.vehicleId">
+        <option [ngValue]="null">Araç Atanmamış</option>
+        <option *ngFor="let vehicle of vehicles$ | async" [ngValue]="vehicle.id">
+          {{ vehicle.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="modal-footer mt-4">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+        <i class="fas fa-times me-2"></i>Cancel
+      </button>
+      <button type="submit" class="btn btn-success" [disabled]="!formRef.form.valid">
+        <i class="fas fa-check me-2"></i>
+        {{ driverToEdit ? 'Save changes' : 'Add Driver' }}
+      </button>
+    </div>
+
+  </form>
+</div>

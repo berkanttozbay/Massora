@@ -1,0 +1,12 @@
+.add-button {
+  background-color: transparent;   /* Arka plan tamamen saydam */
+  border: none;                    /* Kenarlığı kaldır */
+  color: orange;                   /* + ikonunu turuncu yap */
+  font-size: 22px;                 /* + ikonunun boyutu */
+  padding: 8px;                    /* Dokunma alanı rahat olsun */
+  cursor: pointer;                 /* Üzerine gelince el simgesi çıksın */
+}
+
+.add-button:hover {
+  color: darkorange;               /* Hover’da rengi biraz koyulaşsın */
+}

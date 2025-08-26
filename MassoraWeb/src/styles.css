@@ -1,0 +1,84 @@
+/* Tarayıcının varsayılan boşluklarını sıfırla */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* TÜM UYGULAMANIN ARKA PLAN RENGİ */
+body {
+  background-color: #001A2C;
+}
+
+/* ----- HEADER STİLLERİ ----- */
+.main-header {
+  background-color: #001A2C; /* Header'ın arka planı */
+  border-bottom: none !important;
+  padding: 0 2rem; /* İç boşluklar */
+  color: #333;
+}
+
+.main-header .user-controls button {
+  background-color: #003049;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.main-header .user-controls button:hover {
+  background-color: #005f73;
+}
+
+.main-header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.main-header .user-info span {
+    font-weight: 500;
+}
+
+
+/* ----- SIDEBAR STİLLERİ ----- */
+/* app-sidebar component'inin kendisini hedefler */
+app-sidebar .sidebar-container {
+  background-color: #f8f9fa; /* Sidebar'ın arka planı */
+  height: 100%;
+  padding: 1.5rem 1rem;
+}
+
+/* Sidebar içindeki linkler için örnek stiller */
+app-sidebar .sidebar-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+app-sidebar .sidebar-container a {
+  display: block;
+  padding: 10px 15px;
+  color: #343a40;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+app-sidebar .sidebar-container a:hover {
+  background-color: #e9ecef;
+}
+
+/* ----- ANA İÇERİK ALANI ----- */
+.page-content-container {
+  padding: 2rem;
+  color: #ffffff; /* Arka plan koyu olduğu için yazı rengini beyaz yapalım */
+}
+
+.page-content-container h1, 
+.page-content-container h2, 
+.page-content-container h3 {
+    color: #ffffff; /* Başlıkların da rengini beyaz yapalım */
+}

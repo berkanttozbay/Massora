@@ -1,0 +1,42 @@
+/* Ana modal çerçevesi */
+:host ::ng-deep >.modal-content {
+  background-color: #002137; /* Ana arka plan rengi */
+  color: #f0f8ff; /* Açık renkli metin (AliceBlue) */
+  border: 1px solid #002137;
+}
+
+
+/* Modal başlığı */
+:host ::ng-deep .modal-header {
+  border-bottom-color: #002137;
+}
+:host ::ng-deep .modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%); /* Kapatma ikonu beyaz */
+}
+
+/* Modal gövdesi */
+.modal-body strong {
+    font-weight: 600;
+    color: #ffb703; /* Vurgu rengi (turuncu/sarı) */
+}
+
+/* "Evet, Sil" butonu */
+.btn-danger {
+    background-color: #d90429; /* Silme butonu için kırmızı tonu */
+    border-color: #d90429;
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #b20321;
+    border-color: #b20321;
+}
+
+/* "Vazgeç" butonu */
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #f0f8ff;
+    color: #f0f8ff;
+}
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
